@@ -15,7 +15,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-
+    z-index: 901;
     /* allow click-through to backdrop */
     pointer-events: none;
   }
@@ -54,7 +54,7 @@
       <div class="top-menu-container">
         <h2>Board Settings</h2>
         <input type="text" bind:value="{$selectedImageUrl}" />
-        <input type="text" bind:value="{$mapZoom}" />
+        <input type="number" bind:value="{$mapZoom}" />
       </div>
       <div class="actions">
         <button on:click="{closeModal}">OK</button>

@@ -44,7 +44,9 @@
   data-augmented-ui="all-hex border"
   use:draggable="{options}"
   on:contextmenu|preventDefault
-  on:click>
+  on:click|preventDefault
+  on:mousedown
+  on:mouseup>
   {#if token.type === "icon"}
     <i class="{token.src}"></i>
   {:else if token.type === "image"}

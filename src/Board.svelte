@@ -31,8 +31,11 @@
     border-bottom: var(--board-border);
   }
   .map-container {
-    height: minmax(100%, 95vh);
+    height: min(95vh, 100%);
     background: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .tools-container {

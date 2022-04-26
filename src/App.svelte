@@ -22,6 +22,7 @@
     right: 0;
     left: 0;
     background: rgba(0, 0, 0, 0.692);
+    z-index: 900;
   }
   :root {
     --token-height: 2rem;
@@ -31,6 +32,13 @@
     --disabled-color: rgba(133, 19, 127, 0.9);
 
     --board-border: 1px var(--font-color) solid;
+    --map-zoom: 1;
+    --map-pan: 0px;
+
+    --token-index: 5;
+    --map-index: 3;
+    --modal-backdrop-index: 900;
+    --modal-index: 901;
   }
   :global(html, body) {
     position: relative;
@@ -43,9 +51,6 @@
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
       Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
   }
-
-
-
 </style>
 
 <Modals>
