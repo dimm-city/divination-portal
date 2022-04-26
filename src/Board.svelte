@@ -6,7 +6,7 @@
   import TokenTray from "./components/TokenTray.svelte";
 
   function openMapOptions() {
-    openModal(MapOptionsModal, { title: "Alert", message: "This is an alert" });
+    openModal(MapOptionsModal, { });
   }
 </script>
 

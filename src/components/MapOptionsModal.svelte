@@ -1,6 +1,6 @@
 <script>
   import { closeModal } from "svelte-modals";
-  import { selectedImageUrl, mapZoom } from "../stores/GameStore";
+  import { selectedImageUrl } from "../stores/GameStore";
   // provided by <Modals />
   export let isOpen;
 </script>
@@ -53,8 +53,7 @@
     <div class="contents">
       <div class="top-menu-container">
         <h2>Board Settings</h2>
-        <input type="text" bind:value="{$selectedImageUrl}" />
-        <input type="number" bind:value="{$mapZoom}" />
+        <input type="text" bind:value="{$selectedImageUrl}" />      
       </div>
       <div class="actions">
         <button on:click="{closeModal}">OK</button>

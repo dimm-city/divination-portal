@@ -1,7 +1,5 @@
 import { writable, get } from "svelte/store";
 
-export const mapZoom = writable(2);
-
 export const availableTokens = writable([
   {
     src: "bi bi-person",

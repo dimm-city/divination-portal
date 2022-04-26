@@ -2,7 +2,6 @@
   import Token from "./Token.svelte";
   import {
     selectedImageUrl,
-    mapZoom,
     activeTokens,
     removeToken,
   } from "../stores/GameStore";
