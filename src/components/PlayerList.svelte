@@ -20,25 +20,38 @@
     padding: 0;
   }
   .player {
-    display: flex;
-    justify-content: center;
     margin-bottom: 1rem;
+  }
+  .thumbnail-wrapper {
+    height: 4rem;
+    width: min-content;
+  }
+  .thumbnail-wrapper.active {
+    color: grey;
+  }
+  .player-name {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .me .player-name {
+    font-weight: bold;
   }
 </style>
 
 <div class="players-list">
   {#each $players as player}
-    <div class=player>
-      <img src="{player.token.thumbnail_uri}" alt="token" />
-      {#if isMyToken(player.token)}
-        <i
-          on:click="{() => togglePlayerToken(player)}"
-          class="bi"
-          class:bi-pin="{!$activeTokens.includes(player.token)}"
-          class:bi-pin-angle="{$activeTokens.includes(player.token)}"></i>
-      {/if}
+    <div class="player" class:me="{isMyToken(player.token)}">
+      <div
+        on:click="{() => togglePlayerToken(player)}"
+        class="thumbnail-wrapper fade-in"
+        class:active="{$activeTokens.includes(player.token)}"
+        data-augmented-ui="tl-clip tr-clip br-clip bl-clip both">
+        <img src="{player.token.thumbnail_uri}" alt="token" class="fade-in" />
+      </div>
 
-      <div>{player.name}</div>
+      <div class="player-name">{player.name}</div>
     </div>
   {/each}
 </div>

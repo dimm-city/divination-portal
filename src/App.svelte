@@ -1,15 +1,16 @@
 <script>
-  import Board from "./Board.svelte";
+  import Board from "./views/Board.svelte";
   import { Modals, closeModal } from "svelte-modals";
   import Viewer from "./Viewer.svelte";
-  let view = Board;
-
-  function startGame() {
-    view = Board;
-  }
-  function watchGame() {
-    view = Viewer;
-  }
+  import Lobby from "./views/Lobby.svelte";
+  import StartGame from "./views/StartGame.svelte";
+  import { currentView, changeView } from "./stores/AppStore";
+  const Views = {
+    Board: Board,
+    Lobby: Lobby,
+    StartGame: StartGame,
+  };
+  if ($currentView == null) changeView(Lobby);
 </script>
 
 <style global>
@@ -25,7 +26,7 @@
     z-index: 900;
   }
   :root {
-    --token-height: 2rem;
+    --token-height: 4rem;
 
     --font-color: rgb(253, 28, 242);
     --background-color: rgb(0, 34, 63);
@@ -39,6 +40,7 @@
     --map-index: 3;
     --modal-backdrop-index: 900;
     --modal-index: 901;
+    --modal-video-index: 9901;
   }
   :global(html, body) {
     position: relative;
@@ -48,6 +50,7 @@
     margin: 0;
     box-sizing: border-box;
     color: var(--font-color);
+    background-color: var(--background-color);
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
       Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
   }
@@ -57,10 +60,8 @@
   <div slot="backdrop" class="backdrop" on:click="{closeModal}"></div>
 </Modals>
 
-{#if view == null}
-  <div>
-    <button>Start Game</button>
-  </div>
+{#if $currentView == null}
+  <Lobby />
 {:else}
-  <svelte:component this="{view}" />
+  <svelte:component this="{$currentView}" />
 {/if}

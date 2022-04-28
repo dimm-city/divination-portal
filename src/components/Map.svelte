@@ -31,12 +31,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 1rem 1rem;
+    margin: 1rem 1rem;
     z-index: var(--map-index);
   }
 
   img {
     max-height: 85vh;
+    max-width: 100%;
   }
 </style>
 

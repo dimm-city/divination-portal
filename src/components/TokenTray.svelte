@@ -7,8 +7,17 @@
   }
 </script>
 
+<style>
+  .available-token {
+    font-size: 3rem;
+  }
+</style>
+
 <div>
+  <strong>Tokens:</strong>
   {#each $availableTokens as token (token.src)}
-    <div on:click="{() => addToken(token)}"><i class="{token.src}"></i></div>
+    <div class="available-token" on:click="{() => addToken(token)}">
+      <i class="{token.src}"></i>
+    </div>
   {/each}
 </div>
