@@ -51,7 +51,7 @@ export const settings = writable(new Settings());
 export const activeTokens = writable([]);
 
 export const selectedImageUrl = writable(
-  "https://inkarnate-api-as-production.s3.amazonaws.com/WTyAtZ4bcAcRM8hNwX71WF"
+  "https://i.pinimg.com/736x/50/aa/39/50aa393cdaf61707999725ee7e271712.jpg"
 );
 
 export function removeToken(token) {

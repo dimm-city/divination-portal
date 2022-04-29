@@ -8,7 +8,7 @@
       justify-content: center;
       flex-direction: column;
       padding: 2rem;
-      --aug-inlay-bg: #111111;
+      --aug-inlay-bg: #000000a8;
     }
   </style>
   

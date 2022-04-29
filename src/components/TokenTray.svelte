@@ -13,8 +13,7 @@
   }
 </style>
 
-<div>
-  <strong>Tokens:</strong>
+<div> 
   {#each $availableTokens as token (token.src)}
     <div class="available-token" on:click="{() => addToken(token)}">
       <i class="{token.src}"></i>

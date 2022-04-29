@@ -29,7 +29,7 @@
 
 <!-- <canvas /> -->
 <style>
-  :root{
+  :root {
     --board-border: none;
   }
   .board-container {
@@ -50,7 +50,7 @@
     width: 100%;
     grid-column: 1 / 4;
     border-bottom: var(--board-border);
-    font-size: 1.5rem;    
+    font-size: 1.5rem;
   }
   .toolbar i.bi {
     margin-right: 0.5rem;
@@ -58,7 +58,7 @@
   }
   .map-container {
     height: min(95vh, 100%);
-    background: rgba(0, 0, 0, 0.123);
+
     display: flex;
     justify-content: center;
     align-items: center;
@@ -67,12 +67,14 @@
   .tools-container {
     border-right: var(--board-border);
     padding-inline: 0.5rem;
+    margin-top: 3rem;
   }
   .token-tray {
     min-width: min-content;
     border-left: var(--board-border);
     padding-inline: 0.5rem;
     color: var(--font-color);
+    margin-top: 3rem;
   }
 
   .status-bar {
@@ -93,15 +95,9 @@
     <small>{$settings.title} </small>
     <div class="toolbar">
       <i class="bi bi-share" on:click="{() => alert('should copy link')}"></i>
-      <i class="bi bi-film" on:click="{openVideoOverlay}"></i>
-      <!-- <i class="bi bi-webcam" on:click="{openVrumbleConnection}"></i> -->
-      <i class="bi bi-map" on:click="{openMapOptions}"></i>
-      <i class="bi bi-person"></i>
-      <i class="bi bi-x-octagon-fill" on:click="{endGameSession}"></i>
     </div>
   </div>
   <div class="tools-container">
-    <h4>Stats</h4>
     <PlayerList />
   </div>
   <div class="map-container">
@@ -113,7 +109,10 @@
   <div class="status-bar">
     <div class="toolbar">
       <i class="bi bi-gear" on:click="{openMapOptions}"></i>
-      <i class="bi bi-person"></i>
+      <i class="bi bi-film" on:click="{openVideoOverlay}"></i>
+      <!-- <i class="bi bi-webcam" on:click="{openVrumbleConnection}"></i> -->
+      <i class="bi bi-map" on:click="{openMapOptions}"></i>
+      <i class="bi bi-x-octagon-fill" on:click="{endGameSession}"></i>
     </div>
   </div>
 </div>
