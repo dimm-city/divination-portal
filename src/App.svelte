@@ -50,9 +50,16 @@
     margin: 0;
     box-sizing: border-box;
     color: var(--font-color);
-    background-color: var(--background-color);
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
       Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+
+    /* 
+    background-color: var(--background-color); */
+    background-color: black;
+    background-image: url("https://files.dimm.city/stories/intro/index.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position-y: -50px;
   }
 </style>
 

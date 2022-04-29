@@ -1,30 +1,17 @@
 <script>
-  import { changeView} from "../stores/AppStore";
+  import { changeView } from "../stores/AppStore";
+  import JoinGame from "./JoinGame.svelte";
   import StartGame from "./StartGame.svelte";
+  import Page from "../components/Page.svelte";
 </script>
 
 <style>
-  .lobby-container {
-    display: flex;
-    height: 100%;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-  }
-  .button-container {
-    display: grid;
-    grid-auto-flow: row;
-    gap: 1rem;
-    justify-content: center;
-    align-items: center;
-  }
+
 </style>
 
-<div class="lobby-container">
-  <h1>Dimm City Divination Portal</h1>
+<Page title="Dimm City Divination Portal">
   <div class="button-container">
-    <button on:click="{() => changeView(StartGame)}">Start New Game</button>
-    <button on:click="{() => changeView(StartGame)}">Join Existing Game</button>
-    <button on:click="{() => changeView(StartGame)}">View Current Game</button>
+    <button on:click="{() => changeView(StartGame)}">Start a new mission</button>
+    <button on:click="{() => changeView(JoinGame)}">Join a current mission</button>
   </div>
-</div>
+</Page>

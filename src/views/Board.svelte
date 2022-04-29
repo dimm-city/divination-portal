@@ -1,12 +1,15 @@
 <script>
-  import { openModal } from "svelte-modals";
+  import { openModal, closeAllModals } from "svelte-modals";
   import MapOptionsModal from "../components/MapOptionsModal.svelte";
   import Map from "../components/Map.svelte";
   import PlayerList from "../components/PlayerList.svelte";
   import TokenTray from "../components/TokenTray.svelte";
   import VrumbleConnectionModal from "../components/VrumbleConnectionModal.svelte";
   import VideoOverlay from "../components/VideoOverlay.svelte";
+  import { changeView } from "../stores/AppStore";
+  import { settings } from "../stores/GameStore";
 
+  import Lobby from "./Lobby.svelte";
   function openMapOptions() {
     openModal(MapOptionsModal, {});
   }
@@ -17,11 +20,18 @@
     openModal(VideoOverlay, {});
   }
 
-  openVideoOverlay();
+  function endGameSession() {
+    closeAllModals();
+    changeView(Lobby);
+  }
+  if ($settings.mediaFeedUri) openVideoOverlay();
 </script>
 
 <!-- <canvas /> -->
 <style>
+  :root{
+    --board-border: none;
+  }
   .board-container {
     display: grid;
     grid-template-columns: auto 1fr auto;
@@ -30,6 +40,7 @@
     height: 100vh;
     justify-content: center;
     overflow: hidden;
+    z-index: 1;
   }
 
   .title-bar {
@@ -39,7 +50,7 @@
     width: 100%;
     grid-column: 1 / 4;
     border-bottom: var(--board-border);
-    font-size: 1.5rem;
+    font-size: 1.5rem;    
   }
   .toolbar i.bi {
     margin-right: 0.5rem;
@@ -47,7 +58,7 @@
   }
   .map-container {
     height: min(95vh, 100%);
-    background: black;
+    background: rgba(0, 0, 0, 0.123);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -78,12 +89,15 @@
 
 <div class="board-container">
   <div class="title-bar">
-    <div><h3>Sporo Rodeo</h3></div><small>https://divination.dimm.city/?gid=1234 <i class="bi bi-clipboard" on:click="{() => alert('should copy link')}"></i></small>
+    <div><h3>Sporo Rodeo</h3></div>
+    <small>{$settings.title} </small>
     <div class="toolbar">
+      <i class="bi bi-share" on:click="{() => alert('should copy link')}"></i>
       <i class="bi bi-film" on:click="{openVideoOverlay}"></i>
       <!-- <i class="bi bi-webcam" on:click="{openVrumbleConnection}"></i> -->
       <i class="bi bi-map" on:click="{openMapOptions}"></i>
       <i class="bi bi-person"></i>
+      <i class="bi bi-x-octagon-fill" on:click="{endGameSession}"></i>
     </div>
   </div>
   <div class="tools-container">

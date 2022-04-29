@@ -1,5 +1,6 @@
 import { writable, get } from "svelte/store";
-
+import { changeView } from "./AppStore";
+import { Settings } from "./Settings";
 export const availableTokens = writable([
   {
     src: "bi bi-person",
@@ -45,6 +46,8 @@ export const availableImages = writable([
   "https://i.pinimg.com/736x/50/aa/39/50aa393cdaf61707999725ee7e271712.jpg",
 ]);
 
+export const settings = writable(new Settings());
+
 export const activeTokens = writable([]);
 
 export const selectedImageUrl = writable(
@@ -54,3 +57,9 @@ export const selectedImageUrl = writable(
 export function removeToken(token) {
   activeTokens.set(get(activeTokens).filter((t) => t != token));
 }
+
+export function endGameSession() {
+  activeTokens.set([]);
+  changeView("Lobby");
+}
+

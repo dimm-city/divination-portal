@@ -1,59 +1,78 @@
 <script>
+  import Page from "../components/Page.svelte";
   import { changeView } from "../stores/AppStore";
+  import { Settings } from "../stores/Settings";
+  import { settings, selectedImageUrl } from "../stores/GameStore";
   import Board from "./Board.svelte";
-  let settings = {};
+  import Lobby from "./Lobby.svelte";
+  let initialSettings = new Settings();
+  initialSettings.title = "Dimm City RPG - Portal Jumping";
+  initialSettings.access = "Public";
+  let initalImageUrl = $selectedImageUrl;
+
   function beginGameSession() {
-    settings.gameUri = "https://divination.dimm.city/?gid=1234";
+    initialSettings.gameUri = "https://divination.dimm.city/?gid=1234";
+    $settings = initialSettings;
+    $selectedImageUrl = initalImageUrl;
     changeView(Board);
+  }
+
+  function connectToVideoFeed() {
+    initialSettings.mediaFeedUri =
+      "https://www.youtube.com/embed/w1vHu_g-JAU?controls=0";
   }
 </script>
 
 <style>
-  .lobby-container {
-    display: flex;
-    height: 100%;
-    width: 100%;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+ 
+
+
+  .form-container div {
+    margin-bottom: 1.5rem;
   }
-  .button-container {
-    display: grid;
-    grid-auto-flow: row;
-    gap: 1rem;
-    justify-content: center;
-    align-items: center;
-  }
+
 </style>
 
-<div class="lobby-container fade-in">
-  <h1>Setup Your Game</h1>
-  <div>
-    <label for="title">Title:</label>
-    <input type="text" placeholder="Choose a title for your game session" />
-  </div>
-  <div>
-    <label for="title">Map:</label>
-    <input type="text" placeholder="Initial Map" />
-  </div>
-  <div>
-    <label for="title">Access:</label>
-    <label
-      >Public<input
-        type="radio"
-        bind:group="{settings.access}"
-        value="Public" /></label>
-    <label
-      >Private<input
-        type="radio"
-        bind:group="{settings.access}"
-        value="Private" /></label>
-  </div>
-  <div>
-    <p>Please connect to your Vrumble account and select the game feed</p>
-    <a href="#!">Connect</a>
+<Page title="Configure your mission">
+  <div class="form-container">
+    <div>
+      <label for="title">Name:</label>
+      <input
+        type="text"
+        bind:value="{initialSettings.title}"
+        placeholder="Choose a title for your game session" />
+    </div>
+    <div>
+      <label for="title">Initial location address:</label>
+      <input
+        type="text"
+        placeholder="Initial location address"
+        bind:value="{initalImageUrl}" />
+    </div>
+    <div>
+      <label for="title">Access:</label>
+      <label
+        >Public<input
+          type="radio"
+          bind:group="{initialSettings.access}"
+          value="Public" /></label>
+      <label
+        >Private<input
+          type="radio"
+          bind:group="{initialSettings.access}"
+          value="Private" /></label>
+    </div>
+    <div>
+      {#if initialSettings.mediaFeedUri}
+        <p>You have connected to Vrumble, feed initiated</p>
+      {:else}
+        <p>Please connect to your Vrumble account and select the game feed</p>
+        <a href="#!" on:click="{connectToVideoFeed}">Connect</a>
+      {/if}
+    </div>
   </div>
   <div class="button-container">
-    <button on:click="{beginGameSession}">Start the Game</button>
+    <button on:click="{() => changeView(Lobby)}">Back to the lobby...</button>
+    <button on:click="{beginGameSession}">Start the mission!</button>
   </div>
-</div>
+</Page>

@@ -1,7 +1,7 @@
 <script>
   import { draggable } from "@neodrag/svelte";
   import { closeModal } from "svelte-modals";
-
+  import { settings } from "../stores/GameStore";
   let options;
 
   options = {
@@ -64,12 +64,11 @@
     </div>
     <iframe
       width="240"
-      src="https://www.youtube.com/embed/w1vHu_g-JAU?controls=0"
+      src="{$settings.mediaFeedUri}"
       title="YouTube video player"
       frameborder="0"
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
       allowfullscreen></iframe>
-    <div class="actions">
-    </div>
+    <div class="actions"></div>
   </div>
 </div>
