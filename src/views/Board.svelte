@@ -91,7 +91,9 @@
 
 <div class="board-container">
   <div class="title-bar">
-    <div><h3>Sporo Rodeo</h3></div>
+    <div class="toolbar">
+      <i class="bi bi-share" on:click="{() => alert('should copy link')}"></i>
+    </div>
     <small>{$settings.title} </small>
     <div class="toolbar">
       <i class="bi bi-share" on:click="{() => alert('should copy link')}"></i>

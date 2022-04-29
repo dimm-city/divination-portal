@@ -1,5 +1,6 @@
 <script>
   import { closeModal } from "svelte-modals";
+  import Modal from "./Modal.svelte";
   import { selectedImageUrl, availableImages } from "../stores/GameStore";
   // provided by <Modals />
   export let isOpen;
@@ -48,29 +49,22 @@
     justify-content: flex-end;
   }
 
-  .available-maps{
+  .available-maps {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;  
+    gap: 1rem;
   }
-  
 </style>
 
-{#if isOpen}
-  <div role="dialog" class="modal">
-    <div class="contents">
-      <div class="top-menu-container">
-        <h2>Board Settings</h2>
-        <input type="text" bind:value="{$selectedImageUrl}" />
-        <div class="available-maps">
-          {#each $availableImages as img}
-            <img src="{img}" class="map-thumbnail" alt="map" on:click="{() => $selectedImageUrl = img }"/>
-          {/each}
-        </div>
-      </div>
-      <div class="actions">
-        <button on:click="{closeModal}">OK</button>
-      </div>
-    </div>
+<Modal title="Select Location">
+  <input type="text" bind:value="{$selectedImageUrl}" />
+  <div class="available-maps">
+    {#each $availableImages as img}
+      <img
+        src="{img}"
+        class="map-thumbnail"
+        alt="map"
+        on:click="{() => ($selectedImageUrl = img)}" />
+    {/each}
   </div>
-{/if}
+</Modal>

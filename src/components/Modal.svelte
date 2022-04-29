@@ -1,30 +1,37 @@
 <script>
+  import { draggable } from "@neodrag/svelte";
   import { closeModal } from "svelte-modals";
+  import Container from "./Container.svelte";
   // provided by <Modals />
   export let isOpen;
   export let title;
+  let options;
+
+  options = {
+    axis: "both",
+    bounds: "body",
+  };
 </script>
 
 <style>
+   :global(.modal [data-augmented-ui]) {
+    --aug-inlay-bg: #000000f5;
+  }
   .modal {
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: 0;
+    position: absolute;
+    top: 3rem;
+    right: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 901;
-    /* allow click-through to backdrop */
-    pointer-events: none;
   }
 
   .contents {
     min-width: 240px;
-    border-radius: 6px;
+    /* border-radius: 6px;
+    background: white; */
     padding: 16px;
-    background: white;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -43,8 +50,8 @@
   }
 </style>
 
-
-  <div role="dialog" class="modal">
+<div role="dialog" class="modal" use:draggable="{options}">
+  <Container>
     <div class="contents">
       <div class="top-menu-container">
         <slot name="title"><h2>{title}</h2></slot>
@@ -54,4 +61,5 @@
         <button on:click="{closeModal}">OK</button>
       </div>
     </div>
-  </div>
+  </Container>
+</div>

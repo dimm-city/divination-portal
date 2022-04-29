@@ -17,7 +17,7 @@
 <style>
   .modal {
     position: absolute;
-    bottom: 0;
+    bottom: 30%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -31,7 +31,6 @@
     min-width: 240px;
     border-radius: 6px;
     padding: 16px;
-    background: white;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -50,6 +49,12 @@
     display: flex;
     justify-content: flex-end;
   }
+
+  iframe {
+    width: 25vw;
+    height: auto;
+    aspect-ratio: 16/9;
+  }
 </style>
 
 <div
@@ -63,7 +68,6 @@
       <i class="bi bi-x-octagon-fill" on:click="{closeModal}"></i>
     </div>
     <iframe
-      width="240"
       src="{$settings.mediaFeedUri}"
       title="YouTube video player"
       frameborder="0"

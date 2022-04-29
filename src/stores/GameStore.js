@@ -42,6 +42,8 @@ export const availableTokens = writable([
 
 export const availableImages = writable([
   "https://inkarnate-api-as-production.s3.amazonaws.com/WTyAtZ4bcAcRM8hNwX71WF",
+  "https://inkarnate-api-as-production.s3.amazonaws.com/Q6TTMVLkornUx6j65yp2aS",
+  "https://inkarnate-api-as-production.s3.amazonaws.com/7T4Av9pgSXA3kkWvaLw3w8",
   "https://i.pinimg.com/736x/01/0d/b0/010db0cf6d40919797eaee4793d5ae93.jpg",
   "https://i.pinimg.com/736x/50/aa/39/50aa393cdaf61707999725ee7e271712.jpg",
 ]);

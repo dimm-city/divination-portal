@@ -42,6 +42,10 @@
     --modal-index: 901;
     --modal-video-index: 9901;
   }
+
+  :global([data-augmented-ui]) {
+    --aug-inlay-bg: #000000a8;
+  }
   :global(html, body) {
     position: relative;
     width: 100%;
